@@ -17,6 +17,13 @@ Route::post('/ispit','ispitController@rezultat');
  * Direktno sa Route -> Model -> Db
  * @todo DOhvati sve studente iz Osijeka
  */
+Route::get('/dummy',function(){
+    
+$d1 = Fakultet\dummy::find(1);
+return $d1->imeDumija;
+
+});
+
 Route::get('/studloc/{pbr}', 'StudController@studloc');
 
 Route::get('/studenti/stats', 'StudController@stats');
