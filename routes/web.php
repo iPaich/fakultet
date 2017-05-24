@@ -10,6 +10,13 @@
 |
 */
 
+
+Route::get('/nastavnik/all', function(){
+    $d1= Fakultet\Nastavnik::all();
+    return "<h1>Svi nastavnici</h1><br>". $d1;
+});
+Route::get('/nastavnik/top', 'NastavnikController@top');
+
 Route::get('/ispit', 'ispitController@ispit');
 Route::post('/ispit','ispitController@rezultat');
 
@@ -17,13 +24,6 @@ Route::post('/ispit','ispitController@rezultat');
  * Direktno sa Route -> Model -> Db
  * @todo DOhvati sve studente iz Osijeka
  */
-Route::get('/dummy',function(){
-    
-$d1 = Fakultet\dummy::find(1);
-return $d1->imeDumija;
-
-});
-
 Route::get('/studloc/{pbr}', 'StudController@studloc');
 
 Route::get('/studenti/stats', 'StudController@stats');
@@ -103,6 +103,7 @@ Route::get('/mjesto-ajax', function () {
 Route::resource('mjesto',   'MjestoController');
 Route::resource('zupanija', 'ZupanijaController');
 Route::resource('studenti', 'StudController');
+Route::resource('nastavnik', 'NastavnikController');
 Route::resource('dvorana', 'DvoranaController');
 
 Route::get('/laravel-version', function()
