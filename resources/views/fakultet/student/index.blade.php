@@ -1,5 +1,5 @@
 @extends('fakultet.master')
-@section('title', 'Dobrodošli na Algebrin fakultet')
+@section('title', 'Svi studenti')
 
 @section('content')
     <h1>Svi studenti</h1>
