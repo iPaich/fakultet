@@ -17,6 +17,8 @@ Route::get('/nastavnik/all', function(){
 });
 Route::get('/nastavnik/top', 'NastavnikController@top');
 
+
+
 Route::get('/ispit', 'ispitController@ispit');
 Route::post('/ispit','ispitController@rezultat');
 

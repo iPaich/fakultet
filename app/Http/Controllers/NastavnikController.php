@@ -5,6 +5,7 @@ namespace Fakultet\Http\Controllers;
 use Fakultet\Nastavnik;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use View;
 
 
 class NastavnikController extends Controller
@@ -16,7 +17,10 @@ class NastavnikController extends Controller
      */
     public function index()
     {
-        //
+        $nastavnici = Nastavnik::all()->reverse();
+
+        return View::make('fakultet.nastavnik.index')
+                        ->with('nastavnici', $nastavnici);
     }
 
     /**
@@ -26,18 +30,19 @@ class NastavnikController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('fakultet.nastavnik.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return Response
      */
     public function store(Request $request)
     {
-        //
+        $n=new Nastavnik;
+
     }
 
     /**
@@ -65,7 +70,7 @@ class NastavnikController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
