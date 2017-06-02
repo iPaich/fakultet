@@ -9,6 +9,9 @@
 @if (Session::has('message'))
 	<div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
+@foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+@endforeach
 
 {{ Form::model($mjesto, array('action' => array('MjestoController@update', $mjesto->pbr), 'method' => 'PUT')) }}
 

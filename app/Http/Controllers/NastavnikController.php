@@ -106,10 +106,9 @@ class NastavnikController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
-           // 'mbrStud' => 'required|numeric',
-            'imeNastavnik' => 'required|max:24',
+            'imeNastavnik'=> 'required|max:20',
             'prezNastavnik' => 'required|max:25',
-            'pbrStan' => 'required|numeric|max:5',
+            'pbrStan' => 'required|numeric|size:5',
             'sifOrgjed' => 'required|numeric|max:10',
             'koef' => 'required|numeric'
         );

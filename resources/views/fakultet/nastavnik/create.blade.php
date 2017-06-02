@@ -15,11 +15,11 @@
  
 <div class="form-group">
     {{ Form::label('imeNastavnik', 'Ime nastavnika') }}
-    {{ Form::text( 'imeNastavnik', Input::old('imeNastavnik'), array('class' => 'form-control','required' => 'required')) }}
+    {{ Form::text( 'imeNastavnik', Input::old('imeNastavnik'), array('class' => 'form-control','required' => 'required','maxlength' => 20)) }}
 </div>
 <div class="form-group">
     {{ Form::label('prezNastavnik', 'Prezime nastavnika') }}
-    {{ Form::text( 'prezNastavnik',Input::old('prezNastavnik') , array('class' => 'form-control','required' => 'required')) }}
+    {{ Form::text( 'prezNastavnik',Input::old('prezNastavnik') , array('class' => 'form-control','required' => 'required','maxlength' => 25)) }}
 </div>
 <div class="form-group">
     {{ Form::label('pbrStan', 'Mjesto stanovanja') }}
