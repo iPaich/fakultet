@@ -136,7 +136,7 @@ class NastavnikController extends Controller
             $nastavnik->save();
             return Redirect::to('nastavnik');
     
-    }}
+    }
 
         // process the login
         if ($validator->fails()) {
