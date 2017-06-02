@@ -1,19 +1,22 @@
 <?php
 
 namespace Fakultet\Http\Controllers;
-
-
-use Fakultet\Mjesto;
-use Fakultet\Stud;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Input;
+use Fakultet\Orgjed;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
-use Khill\Lavacharts\Lavacharts;
-use View;
-use function public_path;
+use Illuminate\Validation\Validator;
+use Illuminate\View\View;
+use Symfony\Component\Console\Input\Input;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Tests\Controller;
+
+
+
+
+
+
+
 
 class OrgjedController extends Controller {
 
@@ -28,10 +31,9 @@ class OrgjedController extends Controller {
     
 
     public function index() {
-        $orgjed = Orgjed::all()->reverse();
+        $orgjed = orgjed::all()->reverse();
 
-        return View::make('fakultet.orgjed.index')
-                        ->with('orgjed', $orgjed);
+        return View::make('fakultet.orgjed.index');
         
         
     }

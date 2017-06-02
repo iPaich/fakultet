@@ -45,6 +45,8 @@ Route::get('/dvorane', function () {
 
 
 Route::get('m', 'mathController@index');
+Route::get('orgjed', 'orgjedController@index');
+
 
 // Osnovne matematičke operacije
 Route::get('m/{br1}/{br2}/{op}', 'mathController@rezultat');
