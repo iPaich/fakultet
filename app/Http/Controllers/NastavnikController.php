@@ -1,14 +1,17 @@
 <?php
 // php artisan make:controller NastavnikController --resource
 namespace Fakultet\Http\Controllers;
+//use Illuminate\View\View;
+
 
 use Fakultet\Nastavnik;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-//use Illuminate\View\View;
-use View;
+use Illuminate\Support\Facades\Session;
 use Input;
+use Validator;
 use Redirect;
+use View;
 
 
 class NastavnikController extends Controller
@@ -71,7 +74,10 @@ class NastavnikController extends Controller
      */
     public function show($id)
     {
-        //
+         $nastavnici = Nastavnik::find($id);
+
+        return View::make('fakultet.nastavnik.show')
+                        ->with('nastavnici', $nastavnici);
     }
 
     /**
@@ -82,7 +88,11 @@ class NastavnikController extends Controller
      */
     public function edit($id)
     {
-        //
+          $n = Nastavnik::find($id);
+
+        // Pokazi formu za editiranje studenata
+        return View::make('fakultet.nastavnik.edit')
+                        ->with('nastavnik', $n);
     }
 
     /**
@@ -94,8 +104,39 @@ class NastavnikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $rules = array(
+           // 'mbrStud' => 'required|numeric',
+            'imeNastavnik' => 'required|max:24',
+            'prezNastavnik' => 'required|max:25',
+            'pbrStan' => 'required|numeric|max:5',
+            'sifOrgjed' => 'required|numeric|max:10',
+            'koef' => 'required|numeric'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('nastavnik/' . $id . '/edit')
+                            ->withErrors($validator)
+                            ->withInput(Input::except('password'));
+        } else {
+            // store
+           
+            
+                $nastavnik = Nastavnik::find($id);
+             //   $student->mbrStud = Input::get('mbrStud');
+            
+            
+            $nastavnik->imeNastavnik = Input::get('imeNastavnik');
+            $nastavnik->prezNastavnik = Input::get('prezNastavnik');
+            $nastavnik->pbrStan = Input::get('pbrStan');
+            $nastavnik->sifOrgjed = Input::get('sifOrgjed');
+            $nastavnik->koef = Input::get('koef');
+            
+            $nastavnik->save();
+            return Redirect::to('nastavnik');
+    
+    }}
 
     /**
      * Remove the specified resource from storage.
@@ -105,7 +146,11 @@ class NastavnikController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $n = Nastavnik::find($id);
+        $n->delete();
+        
+        Session::flash('message', 'Nastavnik uspješno obrisan!');
+        return Redirect::to('nastavnik');
     }
         /**
      * Ova funkcija vraća listu nastavnika sa najvećim koeficijentom

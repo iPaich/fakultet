@@ -36,13 +36,13 @@ sifra
 , ukupno
 FROM(
 SELECT
-fakultet.nastavnik.sifNastavnik as sifra
-,CONCAT(fakultet.nastavnik.imeNastavnik," ",fakultet.nastavnik.prezNastavnik) AS ime
-, AVG(fakultet.ispit.ocjena) AS prosjek
-, sum(fakultet.ispit.ocjena) AS ukupno
-FROM fakultet.ispit inner join fakultet.nastavnik ON fakultet.ispit.sifNastavnik=fakultet.nastavnik.sifNastavnik
+fakultet1.nastavnik.sifNastavnik as sifra
+,CONCAT(fakultet1.nastavnik.imeNastavnik," ",fakultet1.nastavnik.prezNastavnik) AS ime
+, AVG(fakultet1.ispit.ocjena) AS prosjek
+, sum(fakultet1.ispit.ocjena) AS ukupno
+FROM fakultet1.ispit inner join fakultet1.nastavnik ON fakultet1.ispit.sifNastavnik=fakultet1.nastavnik.sifNastavnik
 GROUP BY
-fakultet.nastavnik.sifNastavnik, fakultet.nastavnik.imeNastavnik, fakultet.nastavnik.prezNastavnik
+fakultet1.nastavnik.sifNastavnik, fakultet1.nastavnik.imeNastavnik, fakultet1.nastavnik.prezNastavnik
 ) AS prva
 WHERE ukupno > 50 #ne broje se oni koji su dali manje od 10 petica
 ORDER BY prosjek DESC

@@ -24,12 +24,44 @@
     @endslot
 @endcomponent
 <br>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>ID</th>
 
-<ol>    
-    @foreach($nastavnici as $key => $value)
-    <li>{{ $value->imeNastavnik }} {{ $value->sifNastavnik }}</li>
+			<th>Ime i prezime</th>
+                        <th></th>
+                        
+		</tr>
+	</thead>
+	<tbody>
+	@foreach($nastavnici as $key => $value)
+		<tr>
+			<td>{{ $value->sifNastavnik }}</td>
+                        
+</td>
+			<td>{{ $value->imeNastavnik }} {{ $value->prezNastavnik }}</td>
 
-    @endforeach
-</ol>
+			<!-- we will also add show, edit, and delete buttons -->
+			<td>
+
+				<!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+				<!-- we will add this later since its a little more complicated than the first two buttons -->
+				{{ Form::open(array('url' => 'nastavnik/' . $value->sifNastavnik, 'class' => 'pull-right')) }}
+					{{ Form::hidden('_method', 'DELETE') }}
+					{{ Form::submit('Obrisi ovog nastavnika', array('class' => 'btn btn-warning','id'=>'nastavnik-del-'.$value->sifNastavnik)) }}
+				{{ Form::close() }}
+
+				<!-- show the nerd (uses the show method found at GET /nerds/{id} -->
+				<a class="btn btn-small btn-success" id="{{'studenti-' . $value->mbrStud}}" href="{{ URL::to('nastavnik/' . $value->sifNastavnik) }}">Pokaži ovog studenta</a>
+
+				<!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+				<a class="btn btn-small btn-info" href="{{ URL::to('nastavnik/' . $value->sifNastavnik . '/edit') }}">Uredi ovog studenta</a>
+
+			</td>
+		</tr>
+	@endforeach
+	</tbody>
+</table>
 @endsection
 

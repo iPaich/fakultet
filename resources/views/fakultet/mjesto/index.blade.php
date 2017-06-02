@@ -2,7 +2,7 @@
 @section('title', 'Dobrodošli na Algebrin fakultet')
 
 @section('content')
-    <h1>{{ $mjestos->total() }} Mjesta</h1>
+    <h1>Ukupno ima{{ $mjestos->total() }} Mjesta</h1>
     <strong> stranica {{ $mjestos->currentPage() }} od {{ $mjestos->lastPage() }}</strong><br>
     <a href="{{ URL::to('mjesto/create') }}">Kreiraj novu mjesto</a>
 
@@ -11,12 +11,14 @@
 	<div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
+{{ $mjestos->links() }}
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th>Poštanski broj</th>
 			<th>Naziv</th>
                         <th>Županija</th>
+                        <th colspan="2"></th>
 		</tr>
 	</thead>
 	<tbody>
