@@ -19,8 +19,8 @@ class CreateNastavnikTable extends Migration {
 		 * ako postavim increments() on to pretvori u INT(11)
 		 * a integer() postavi u INT(10) nakon toga ne rade FOREIGN KEY
 		 * */
-			//$table->increments('sifNastavnik')->unsigned();
-			$table->integer('sifNastavnik')->primary();
+			$table->increments('sifNastavnik')->unsigned();
+			//$table->integer('sifNastavnik')->primary();
 			$table->char('imeNastavnik', 25);
 			$table->char('prezNastavnik', 25);
 			$table->integer('pbrStan')->unsigned()->index('pbrStan');

@@ -3,7 +3,7 @@
 
 @section('content')
 <h1>Svi studenti</h1>
-<a href="{{ URL::to('studenti/create') }}">Kreiraj novog studenta</a>
+<a href="{{ URL::to('orgjed/create') }}">Kreiraj novu orgjed</a>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
@@ -20,30 +20,28 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($studenti as $key => $value)
+        @foreach($orgjed as $key => $value)
         <tr>
-            <td>{{ $value->mbrStud }}</td>
-            <td class="text-center">@if ($value->slikaStud!=0)
-                <img src="/slike-studenata/thumb_{{$value->mbrStud}}.jpg" width="50">
-                @endif
+            <td>{{ $value->sifOrgjed }} </td>
+            <td class="text-center">
             </td>
-            <td>{{ $value->imeStud }} {{ $value->prezStud }}</td>
+            <td>{{ $value->nazOrgjed }} {{ $value->sifNadorgjed }}</td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>
 
 
                 <!-- we will add this later since its a little more complicated than the first two buttons -->
-                {{ Form::open(array('url' => 'studenti/' . $value->mbrStud, 'class' => 'pull-right')) }}
+                {{ Form::open(array('url' => 'orgjed/' . $value->sifOrgjed, 'class' => 'pull-right')) }}
                 {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Obrisi ovog studenta', array('class' => 'btn btn-warning','id'=>'student-del-'.$value->mbrStud)) }}
+                {{ Form::submit('Obrisi ovu orgjed', array('class' => 'btn btn-warning','id'=>'student-del-'.$value->sifOrgjed)) }}
                 {{ Form::close() }}
 
                 <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                <a class="btn btn-small btn-success" id="{{'studenti-' . $value->mbrStud}}" href="{{ URL::to('studenti/' . $value->mbrStud) }}">Pokaži ovog studenta</a>
+                <a class="btn btn-small btn-success" id="{{'orgjed-' . $value->sifOrgjed}}" href="{{ URL::to('orgjed/' . $value->sifOrgjed) }}">Pokaži ovu orgjed</a>
 
                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                <a class="btn btn-small btn-info" href="{{ URL::to('studenti/' . $value->mbrStud . '/edit') }}">Uredi ovog studenta</a>
+                <a class="btn btn-small btn-info" href="{{ URL::to('orgjed/' . $value->sifOrgjed . '/edit') }}">Uredi ovu orgjed</a>
 
             </td>
         </tr>

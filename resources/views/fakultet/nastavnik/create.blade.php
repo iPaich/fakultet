@@ -1,15 +1,3 @@
-<!--
-
-NEDOVRSENO   !!!!
-Treba:
-//TODO - prilagoditi tip polja podacima iz baze
-//TODO - stilski posloziti formula
-//TODO - validator za text
-//TODO - validator duljine pbr-a 
-//TODO - validator datuma rodjenja
-
--->
-
 <!-- resources/views/fakultet/nastavnik/create.blade.php -->
 @extends('fakultet.master')
 @section('title', 'Unesi novog nastavnika')

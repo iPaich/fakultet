@@ -107,6 +107,7 @@ Route::resource('zupanija', 'ZupanijaController');
 Route::resource('studenti', 'StudController');
 Route::resource('nastavnik', 'NastavnikController');
 Route::resource('dvorana', 'DvoranaController');
+Route::resource('orgjed', 'OrgjedController');
 
 Route::get('/laravel-version', function()
 {

@@ -10,12 +10,12 @@ Treba:
 
 -->
 
-<!-- resources/views/fakultet/nastavnik/create.blade.php -->
+<!-- resources/views/fakultet/nastavnik/edit.blade.php -->
 @extends('fakultet.master')
-@section('title', 'Unesi novog nastavnika')
+@section('title', 'Uredi nastavnika')
 
 @section('content')
-<h1>Editiraj ovog nastavnika</h1>
+<h1>Uredi nastavnika</h1>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
@@ -46,7 +46,7 @@ Treba:
     {{ Form::number( 'koef', Input::old('koef'), array('class' => 'form-control','required' => 'required')) }}
 </div>
 
-{{ Form::submit('Editiraj nastavnika!', array('class' => 'btn btn-primary')) }}
+{{ Form::submit('Uredi nastavnika!', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 

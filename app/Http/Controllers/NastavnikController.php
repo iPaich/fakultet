@@ -5,6 +5,7 @@ namespace Fakultet\Http\Controllers;
 
 
 use Fakultet\Nastavnik;
+use Fakultet\Stud;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -58,7 +59,7 @@ class NastavnikController extends Controller
         $n->pbrStan=Input::get('pbrStan');
         $n->sifOrgjed=Input::get('sifOrgjed');
         $n->koef=Input::get('koef');
-        $n->sifNastavnik=999;
+        //$n->sifNastavnik=999;
         $n->save();
         
         return Redirect::to('nastavnik');
@@ -138,6 +139,28 @@ class NastavnikController extends Controller
     
     }}
 
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('nastavnik/' . $id . '/edit')
+                            ->withErrors($validator)
+                            ->withInput(Input::except('password'));
+        } else {
+            // store
+            $nastavnik = Nastavnik::find($id);
+                     
+            $nastavnik->imeNastavnik= Input::get('imeNastavnik');
+            $nastavnik->prezNastavnik = Input::get('prezNastavnik');
+            $nastavnik->pbrStan = Input::get('pbrStan');
+            $nastavnik->sifOrgjed = Input::get('sifOrgjed');
+            $nastavnik->koef = Input::get('koef');    
+        
+            $nastavnik->save();
+
+            // redirect
+            Session::flash('message', 'Uspjesno uređen nastavnik!');
+            return Redirect::to('nastavnik');
+    }
+    }
     /**
      * Remove the specified resource from storage.
      *
