@@ -9,16 +9,6 @@ use Validator;
 use Redirect;
 use View;
 
-
-
-
-
-
-
-
-
-
-
 class OrgjedController extends Controller
 {
   
